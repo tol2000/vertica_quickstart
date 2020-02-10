@@ -1,0 +1,3 @@
+= Vertica quickstart
+
+Web: localhost:5433
