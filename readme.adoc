@@ -1,3 +1,5 @@
 = Vertica quickstart
 
-Web: localhost:5433
+ports:
+* 5433 - sql client
+* 5444 - management console
