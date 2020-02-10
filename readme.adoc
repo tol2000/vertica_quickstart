@@ -3,3 +3,14 @@
 ports:
 * 5433 - sql client
 * 5444 - management console
+
+Connection Parameters
+* Default DB Name - docker
+* Default User - dbadmin
+* Default Password (NO PASSWORD) -
+
+== Squirrel
+
+* Install driver (copy jdbc into folder in home dir)
+* Add driver installed above to classpath in drivers insquirrel
+* url: jdbc:vertica://localhost:5433/docker
