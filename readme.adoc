@@ -1,10 +1,12 @@
 = Vertica quickstart
 
 ports:
+
 * 5433 - sql client
 * 5444 - management console
 
 Connection Parameters
+
 * Default DB Name - docker
 * Default User - dbadmin
 * Default Password (NO PASSWORD) -
