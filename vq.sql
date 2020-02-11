@@ -21,9 +21,10 @@ create external table athlete_external (
 select * from athlete_external limit 100;
 
 create table athlete1 as select * from athlete_external;
+
 select * from storage_containers;
 
-select * from athlete1;
+select * from athlete1 limit 5;
 
 explain select * from athlete1 a1 join athlete1 a2 on a1.Name = a2.Name;
 
