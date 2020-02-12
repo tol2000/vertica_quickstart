@@ -51,13 +51,16 @@ segmented by (ID) all nodes;
 
 insert into athlete2 select * from athlete1;
 
-explain select * from athlete2 a1 join athlete2 a2 on a1.Name = a2.Name;
+explain select * from athlete2 a1 jo in athlete2 a2 on a1.Name = a2.Name;
 
 explain select * from athlete1 a1 join athlete1 a2 on a1.Games = a2.Games;
 
 explain select * from athlete2 a1 join athlete2 a2 on a1.Games = a2.Games;
 
+--drop projection athlete2_games;
+
 create projection athlete2_games as select * from athlete2 order by Games;
+
 select start_refresh();
 
 drop table athlete_external;

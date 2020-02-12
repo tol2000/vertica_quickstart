@@ -1,14 +1,16 @@
 -- some analytics :)
-select first_value(name||'  '||min_age||' - '||max_age||' = '||(max_age-min_age))
-		over (order by (max_age-min_age) desc) as long,
-	  first_value(name||'  '||min_age||' - '||max_age||' = '||(max_age-min_age))
-		over (order by (max_age-min_age) asc) as short
+select long, short, max(glong), min(glong)
+       , count(*) as num_of_athlets
   from (
 	select
-	       name, min(age) as min_age,max(age) as max_age
+	       first_value(sport||' : '||name||'  '||min(age)||' - '||max(age)||' = '||(max(age)-min(age)))
+		    over (partition by sport order by (max(age)-min(age)) desc) as long,
+	       first_value(sport||' : '||name||'  '||min(age)||' - '||max(age)||' = '||(max(age)-min(age)))
+		    over (partition by sport order by (max(age)-min(age)) asc) as short,
+	       max(age) - min(age) as glong
 	  from athlete_external
-	  group by name
-	  order by max(age)-min(age)
+	  group by sport, name
+	  having max(age)-min(age)>0
   ) a
-  where max_age-min_age>0
-  limit 1
+  group by long, short
+  order by max(glong) desc
