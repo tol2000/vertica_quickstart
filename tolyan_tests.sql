@@ -14,3 +14,10 @@ select long, short, max(glong), min(glong)
   ) a
   group by long, short
   order by max(glong) desc
+;
+
+explain select *
+  from athlete_external ae 
+  where ae.Age is not NULL 
+  limit 1 over (partition by null order by ae.Age desc)
+;
